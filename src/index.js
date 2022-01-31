@@ -26,12 +26,12 @@ app.get("/", (request, response) => {
   const userCollection = db.collection("users");
 
   userCollection.get().then((snapshot) => {
-    // const users = []
-    // snapshot.forEach(doc => {
-    //     users.push({id: doc.id, ...doc.data()})
-    // })
+    const users = [];
+    snapshot.forEach((doc) => {
+      users.push({ id: doc.id, ...doc.data() });
+    });
 
-    response.send(snapshot.docs);
+    response.send(users);
   });
 
   // response.send('Hello World!');
